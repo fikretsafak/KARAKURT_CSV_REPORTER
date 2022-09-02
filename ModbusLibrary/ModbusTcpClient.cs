@@ -9,6 +9,7 @@ namespace ModbusLibrary
         public ModbusTcpClient(string ipAddress = "192.168.0.24", int port = 502, byte unitId = 255)
         {
             _client = new ModbusClient(ipAddress, port);
+            _client.ConnectionTimeout = 200;
             //_client.UnitIdentifier = unitId;
         }
 
@@ -42,6 +43,13 @@ namespace ModbusLibrary
             {
                 throw new ArgumentException("Cannot Connect To The Device.");
             }
+        }
+
+        public bool Available(int timeout)
+        {
+
+            return true;
+                
         }
 
         public void Disconnect()
